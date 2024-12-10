@@ -2,7 +2,7 @@ import numpy as np
 from scipy.linalg import expm  # For matrix exponential
 import massParam as P
 
-use_self_defined_matrix = 2
+matrix_version = 2
 
 A_og = np.array([[0.0, 1.0],
                       [-P.k / P.m, -P.b / P.m]])
@@ -48,9 +48,9 @@ def compute_integral(u,x, A=A_og, dt=P.Ts):
     #     integral_sum += (e_term @ B * u[s])  # Add contribution of e^(A*(t-s)) * B * u(s)
     # result = integral_sum[0:2,0:]  # Multiply by dt and store result
     exp_A_dt = np.zeros_like(A)
-    if use_self_defined_matrix == 1:
+    if matrix_version == 1:
         exp_A_dt = matrix_exponential(A*dt)
-    elif use_self_defined_matrix == 2:
+    elif matrix_version == 2:
         exp_A_dt = matrix_exponential_analytical(A,dt)
     else:
         exp_A_dt = expm(A*dt)
