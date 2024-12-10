@@ -5,63 +5,6 @@ import massParam as P
 from scipy.linalg import expm  # For matrix exponential
 plt.ion()  # enable interactive drawing
 
-A_og = np.array([[0.0, 1.0],
-                      [-P.k / P.m, -P.b / P.m]])
-B_og = np.array([[0.0],
-                      [1.0 / P.m]])
-
-def f(self, state, u):
-    #  Return xdot = f(x,u),
-    z = state.item(0)
-    zdot = state.item(1)
-    force = u
-    # The equations of motion.
-    zddot = (force - self.b*zdot - self.k*z)/self.m
-    # build xdot and return
-    xdot = np.array([[zdot], [zddot]])
-    return xdot
-
-def rk4_step(self, x, u):
-    # Integrate ODE using Runge-Kutta RK4 algorithm
-    F1 = f(x, u)
-    F2 = f(x + P.Ts / 2 * F1, u)
-    F3 = f(x + P.Ts / 2 * F2, u)
-    F4 = f(x + P.Ts * F3, u)
-    x += P.Ts / 6 * (F1 + 2*F2 + 2*F3 + F4)
-    return x
-
-
-def compute_integral(u,x, t_cur, A=A_og, B=B_og, dt=P.Ts):
-    """
-    Compute the integral:
-        ∫ e^(A * (t-s)) * B * u(s) ds
-    where u is a discrete-time array and A, B are constant matrices.
-
-    Args:
-        A (numpy.ndarray): Constant matrix A.
-        B (numpy.ndarray): Constant matrix B.
-        u (numpy.ndarray): Discrete-time input signal.
-        dt (float): Time step between samples.
-
-    Returns:
-        numpy.ndarray: Array of results corresponding to each time step.
-    """
-    n = len(u)
-    t = n - 1
-   
-    
-    # # for t in range(n-1,n):#np.arange(P.t_start, t_cur +P.Ts, P.Ts):
-    # integral_sum = np.zeros((A.shape[0], B.shape[1]))  # Temporary accumulator
-    # for s in range(t + 1):  # Iterate over past values up to current time t
-    #     e_term = expm(A * (t - s)*dt)  # Matrix exponential for (t-s)
-    #     integral_sum += (e_term @ B * u[s])  # Add contribution of e^(A*(t-s)) * B * u(s)
-    # result = integral_sum[0:2,0:]  # Multiply by dt and store result
-
-    result = x + dt*expm(A*dt)*u[t]
-    
-    return result
-
-
 
 
 
