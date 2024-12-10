@@ -2,7 +2,7 @@ See `` 671_Project_Introduction.pdf `` for how to do this homework assignment.
 
 For computing the solutions, you can find various useful helper functions in the ``numpy`` library. This library is already imported into the starter code file for you. 
 
-This assignment utilizes D.11 from the [BYU Controlbook class](https://github.com/byu-controlbook/controlbook_public) to create a full-state feedback example using exponential matrices.
+This assignment utilizes D.11 from the [BYU Controlbook class](https://github.com/byu-controlbook/controlbook_public), with permission from Dr. Peterson, to create a full-state feedback example using exponential matrices.
 
 The answer key is found on a private branch.
 
