@@ -2,7 +2,7 @@ import numpy as np
 from scipy.linalg import expm  # For matrix exponential
 import massParam as P
 
-matrix_version = 2
+matrix_version = 0
 
 A_og = np.array([[0.0, 1.0],
                       [-P.k / P.m, -P.b / P.m]])
