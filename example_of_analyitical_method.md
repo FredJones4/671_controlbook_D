@@ -175,3 +175,6 @@ $$
 \end{pmatrix}
 $$ 
 rotates the space by angle \( bt \).
+## Alternative
+
+![image](https://github.com/user-attachments/assets/a7e2d06f-2f07-41a4-9210-69f47c052093)
