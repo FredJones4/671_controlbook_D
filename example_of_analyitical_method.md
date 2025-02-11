@@ -73,10 +73,28 @@ e^{(a-bi)t} &= e^{at}(\cos bt - i\sin bt)
 \end{aligned}
 $$
 
+For reference, that transformation matrix is:
+
+$$
+\begin{aligned}
+P = \begin{pmatrix}
+1 & i \\
+1 & -i 
+\end{pmatrix}
+\end{aligned}
+$$
+
+$$
+P^{-1} = \frac{1}{2} \begin{pmatrix}
+1 & 1 \\
+-i & i
+\end{pmatrix}
+$$
+
 Therefore,
   
 $$
-e^{Bt} = \begin{pmatrix}
+e^{Bt} = P e^{Bt} P^{-1} =   \begin{pmatrix}
 e^{at} \cos bt & e^{at} \sin bt \\
 -e^{at} \sin bt & e^{at} \cos bt
 \end{pmatrix}
